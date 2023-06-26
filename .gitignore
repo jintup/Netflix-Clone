@@ -64,3 +64,8 @@ yarn-error.log
 
 # testing
 /coverage
+
+App.tsx
+app/navigators/navigation.tsx
+app/screens/splash-screen.tsx
+
