@@ -67,5 +67,5 @@ yarn-error.log
 
 App.tsx
 app/navigators/navigation.tsx
-app/screens/splash-screen.tsx
+
 
