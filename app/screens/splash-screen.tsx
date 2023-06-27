@@ -1,18 +1,33 @@
-import React, { useEffect } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import React, { useEffect, useRef } from 'react';
+import { View, Text, StyleSheet, Animated } from 'react-native';
 import { Colors } from '../theme/colors';
 import { spacing } from '../theme/spacing';
 import { timing } from '../theme/timing';
 const Splashscreen = () => {
+  const slideAnimation = useRef(new Animated.Value(100)).current;
+
+
   useEffect(() => {
-    const timeout = setTimeout(() => { }, timing.quick);
+    const slideAni = Animated.timing(slideAnimation, {
+      toValue: 0,
+      duration: 1000,
+      useNativeDriver: true,
+    });
+    slideAni.start();
     return () => {
-      clearTimeout(timeout);
+      slideAni.stop();
     };
-  }, []);
+  }, [slideAnimation]);
+
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>NETFLIX</Text>
+      <Animated.View
+        style={[
+          styles.tcontainer,
+          { transform: [{ translateX: slideAnimation }] },
+        ]}>
+        <Animated.Text style={styles.text}>NETFLIX</Animated.Text>
+      </Animated.View>
     </View>
   );
 };
@@ -24,6 +39,9 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.darkblack,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  tcontainer: {
+    alignItems: 'center',
   },
   text: {
     color: Colors.red,
