@@ -69,3 +69,17 @@ yarn-error.log
 
 
 
+app/components/long-button.tsx
+app/assets/best-streaming.jpg
+app/assets/logo.png
+app/components/onboarding-data.ts
+app/components/scroll.tsx
+app/components/tour-slideitem.tsx
+app/components/toursrn-header.tsx
+app/navigators/navigation.tsx
+app/navigators/navigation.tsx
+app/screens/splash-screen.tsx
+app/theme/colors.ts
+app/screens/tourscreen.tsx
+app/theme/colors.ts
+app/theme/colors.ts
