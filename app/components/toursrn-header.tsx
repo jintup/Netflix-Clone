@@ -1,0 +1,41 @@
+import {
+    View,
+    Text,
+    Image,
+    StyleSheet,
+    ScrollView,
+    TouchableOpacity,
+} from 'react-native';
+import React from 'react';
+import { Colors } from '../theme/colors';
+const Header = () => {
+    return (
+        <View style={styles.container}>
+            <Image source={require('../assets/logo.png')} style={styles.logo} resizeMode="contain" />
+            <Text style={styles.signInText}>SIGN IN</Text>
+        </View>
+    );
+};
+
+export default Header;
+
+const styles = StyleSheet.create({
+    container: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        paddingHorizontal: 20,
+        paddingTop: 20,
+    },
+    logo: {
+        width: 100,
+        height: 40,
+        marginHorizontal: -45,
+
+    },
+    signInText: {
+        color: '#fff',
+        fontSize: 18,
+        fontWeight: 'bold',
+    },
+});
