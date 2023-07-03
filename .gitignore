@@ -72,7 +72,7 @@ yarn-error.log
 
 app/components/onboarding-data.ts
 app/components/scroll.tsx
-app/components/tour-slideitem.tsx
+
 
 app/navigators/navigation.tsx
 app/navigators/navigation.tsx
