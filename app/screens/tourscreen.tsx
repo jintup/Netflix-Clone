@@ -6,15 +6,20 @@ import { Colors } from '../theme/colors';
 import onboardingData from '../components/onboarding-data';
 import Header from '../components/toursrn-header';
 import ScrollIndicator from '../components/scroll';
+import { useNavigation } from '@react-navigation/native';
 const TourScreen = () => {
+    const navigation = useNavigation();
     const { width, height } = Dimensions.get('window');
     const [currentIndex, setCurrentIndex] = React.useState(0);
+
     const handleScroll = event => {
         const contentOffset = event.nativeEvent.contentOffset;
         const index = Math.round(contentOffset.x / width);
         setCurrentIndex(index);
     };
-    const handleGetStarted = () => { };
+    const handleGetStarted = () => {
+        navigation.navigate('Signup');
+    };
 
     return (
         <View style={styles.container}>
