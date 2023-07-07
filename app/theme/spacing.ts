@@ -9,5 +9,4 @@ export const spacing = {
     huge: 48,
     massive: 64,
 } as const;
-
 export type Spacing = keyof typeof spacing;
