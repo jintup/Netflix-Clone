@@ -75,10 +75,7 @@ yarn-error.log
 
 
 app/navigators/navigation.tsx
-app/components/inputfield.tsx
-app/components/primary-button.tsx
 app/screens/login.tsx
 app/screens/signup.tsx
-app/components/header.tsx
 
 
