@@ -6,7 +6,7 @@ const Header = () => {
         <View>
             <View style={styles.container}>
                 <Image
-                    source={require('../assets/nlogo.png')}
+                    source={require('../assets/images/nlogo.png')}
                     style={styles.logo}
                     resizeMode="contain"
                 />
