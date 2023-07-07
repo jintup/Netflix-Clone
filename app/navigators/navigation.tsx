@@ -8,6 +8,7 @@ import Login from '../screens/login';
 import Signup from '../screens/signup';
 const Stack = createNativeStackNavigator();
 
+
 const Navigation: React.FC = () => {
   return (
     <NavigationContainer>
