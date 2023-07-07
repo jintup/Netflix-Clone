@@ -84,7 +84,6 @@ app/components/primary-button.tsx
 app/components/toursrn-header.tsx
 app/screens/login.tsx
 app/screens/signup.tsx
-app/screens/tourscreen.tsx
 app/components/header.tsx
 app/theme/colors.ts
 app/theme/spacing.ts

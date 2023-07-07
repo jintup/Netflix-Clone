@@ -24,7 +24,6 @@ const TourScreen = () => {
     return (
         <View style={styles.container}>
             <Header />
-
             <ScrollView
                 horizontal={true}
                 pagingEnabled={true}
