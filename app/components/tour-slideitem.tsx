@@ -1,15 +1,11 @@
-import { StyleSheet, Text, View, Image, Dimensions } from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
 import React from 'react';
 import { Colors } from '../theme/colors';
 
-const SlideItem = ({ imageSource, slideText, description }) => {
+const SlideItem: React.FC = ({ imageSource, slideText, description }) => {
   return (
     <View style={styles.slideContainer}>
-      <Image
-        source={imageSource}
-        style={styles.backgroundImage}
-        resizeMode="cover"
-      />
+      <Image source={imageSource} style={styles.backgroundImage} resizeMode="cover" />
 
       <Text style={styles.slideText}>{slideText}</Text>
       <Text style={styles.description}>{description}</Text>
@@ -20,7 +16,6 @@ const SlideItem = ({ imageSource, slideText, description }) => {
 export default SlideItem;
 
 const styles = StyleSheet.create({
-
   backgroundImage: {
     position: 'absolute',
     top: 0,

@@ -1,7 +1,6 @@
-import React from 'react';
-import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView, Dimensions } from 'react-native';
+import { Dimensions } from 'react-native';
 
-const { width, height } = Dimensions.get('window');
+Dimensions.get('window');
 
 const onboardingData = [
   {
