@@ -66,18 +66,3 @@ yarn-error.log
 /coverage
 
 
-
-
-
-
-
-
-
-
-app/navigators/navigation.tsx
-app/navigators/navigation.tsx
-app/screens/splash-screen.tsx
-app/theme/colors.ts
-app/screens/tourscreen.tsx
-app/theme/colors.ts
-app/theme/colors.ts
