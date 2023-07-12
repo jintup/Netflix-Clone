@@ -1,9 +1,9 @@
 import React from 'react';
-import { View, ImageBackground, ScrollView, StyleSheet } from 'react-native';
+import { View, ScrollView, StyleSheet } from 'react-native';
 import Header from '../components/header';
 import { Colors } from '../theme/colors';
-import LinearGradient from 'react-native-linear-gradient';
 import MovieCard from '../components/card';
+import Banner from '../components/banner';
 
 const Home: React.FC = () => {
   return (
@@ -17,13 +17,7 @@ const Home: React.FC = () => {
       <ScrollView
         contentContainerStyle={styles.scrollViewContent}
         showsVerticalScrollIndicator={false}>
-        <LinearGradient colors={['transparent', '#000000']} style={styles.gradient}>
-          <ImageBackground
-            source={require('../assets/images/bg3.jpg')}
-            style={styles.backgroundImage}
-            resizeMode="cover"
-          />
-        </LinearGradient>
+        <Banner />
         <View style={styles.movieCardContainer}>
           <MovieCard title={'Popular on Netflix'} />
           <MovieCard title={'Trending Now'} />
@@ -46,15 +40,6 @@ const styles = StyleSheet.create({
   },
   scrollViewContent: {
     flexGrow: 1,
-  },
-  backgroundImage: {
-    flex: 1,
-    width: '100%',
-    height: '230%',
-    aspectRatio: 2,
-  },
-  gradient: {
-    flex: 1,
   },
   movieCardContainer: {
     paddingTop: '75%',

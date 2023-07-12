@@ -7,11 +7,10 @@ import Signup from '../screens/signup';
 import Home from '../screens/home';
 const Stack = createNativeStackNavigator();
 
-
 const Navigation: React.FC = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Splashscreen">
+      <Stack.Navigator initialRouteName="TourScreen">
         <Stack.Screen
           name="TourScreen"
           component={TourScreen}
