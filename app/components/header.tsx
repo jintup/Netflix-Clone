@@ -2,9 +2,9 @@ import { StyleSheet, Text, Image, View, TouchableOpacity } from 'react-native';
 import React from 'react';
 import { Colors } from '../theme/colors';
 
-const Header: React.FC = ({ leftImageSource, rightImageSource }) => {
+const Header: React.FC = ({ leftImageSource, rightImageSource, bgColor }) => {
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { backgroundColor: bgColor }]}>
       <Image source={leftImageSource} style={styles.leftLogo} resizeMode="contain" />
       <Image source={rightImageSource} style={styles.rightLogo} resizeMode="contain" />
     </View>
@@ -19,7 +19,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     height: 100,
-    //backgroundColor: Colors.darkblack,
   },
   leftLogo: {
     width: 100,

@@ -7,24 +7,27 @@ import Banner from '../components/banner';
 
 const Home: React.FC = () => {
   return (
-    <View style={styles.container}>
+    <>
       <View style={styles.headerContainer}>
         <Header
           leftImageSource={require('../assets/images/nlogo.png')}
           rightImageSource={require('../assets/images/avatar.png')}
+          bgColor={Colors.darkblack}
         />
       </View>
-      <ScrollView
-        contentContainerStyle={styles.scrollViewContent}
-        showsVerticalScrollIndicator={false}>
-        <Banner />
-        <View style={styles.movieCardContainer}>
-          <MovieCard title={'Popular on Netflix'} />
-          <MovieCard title={'Trending Now'} />
-          <MovieCard title={'Bollywood Movies'} />
-        </View>
-      </ScrollView>
-    </View>
+      <View style={styles.container}>
+        <ScrollView
+          contentContainerStyle={styles.scrollViewContent}
+          showsVerticalScrollIndicator={false}>
+          <Banner />
+          <View style={styles.movieCardContainer}>
+            <MovieCard title={'Popular on Netflix'} />
+            {/* <MovieCard title={'Trending Now'} />
+            <MovieCard title={'Bollywood Movies'} /> */}
+          </View>
+        </ScrollView>
+      </View>
+    </>
   );
 };
 
