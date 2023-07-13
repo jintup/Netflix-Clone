@@ -11,7 +11,9 @@ const Login: React.FC = () => {
   const navigation = useNavigation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const handleSignIn = () => {};
+  const handleSignIn = () => {
+    navigation.navigate('ProfileScreen');
+  };
   const handleSignup = () => {
     navigation.navigate('Signup');
   };

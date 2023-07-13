@@ -4,8 +4,14 @@ import Header from '../components/header';
 import { Colors } from '../theme/colors';
 import MovieCard from '../components/card';
 import Banner from '../components/banner';
-
+import { useNavigation } from '@react-navigation/native';
+// import {orginals,Actions} from '../constants/urls'
 const Home: React.FC = () => {
+  const navigation = useNavigation();
+
+  const handleRightImagePress = () => {
+    navigation.navigate('ProfileScreen');
+  };
   return (
     <>
       <View style={styles.headerContainer}>
@@ -13,6 +19,7 @@ const Home: React.FC = () => {
           leftImageSource={require('../assets/images/nlogo.png')}
           rightImageSource={require('../assets/images/avatar.png')}
           bgColor={Colors.darkblack}
+          onRightImagePress={handleRightImagePress}
         />
       </View>
       <View style={styles.container}>
@@ -22,8 +29,8 @@ const Home: React.FC = () => {
           <Banner />
           <View style={styles.movieCardContainer}>
             <MovieCard title={'Popular on Netflix'} />
-            {/* <MovieCard title={'Trending Now'} />
-            <MovieCard title={'Bollywood Movies'} /> */}
+            <MovieCard title={'Trending Now'} />
+            <MovieCard title={'Bollywood Movies'} />
           </View>
         </ScrollView>
       </View>

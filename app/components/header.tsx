@@ -2,11 +2,21 @@ import { StyleSheet, Text, Image, View, TouchableOpacity } from 'react-native';
 import React from 'react';
 import { Colors } from '../theme/colors';
 
-const Header: React.FC = ({ leftImageSource, rightImageSource, bgColor }) => {
+const Header: React.FC = ({
+  leftImageSource,
+  rightImageSource,
+  bgColor,
+  onLeftImagePress,
+  onRightImagePress,
+}) => {
   return (
     <View style={[styles.container, { backgroundColor: bgColor }]}>
-      <Image source={leftImageSource} style={styles.leftLogo} resizeMode="contain" />
-      <Image source={rightImageSource} style={styles.rightLogo} resizeMode="contain" />
+      <TouchableOpacity onPress={onLeftImagePress}>
+        <Image source={leftImageSource} style={styles.leftLogo} resizeMode="contain" />
+      </TouchableOpacity>
+      <TouchableOpacity onPress={onRightImagePress}>
+        <Image source={rightImageSource} style={styles.rightLogo} resizeMode="contain" />
+      </TouchableOpacity>
     </View>
   );
 };

@@ -5,6 +5,7 @@ import TourScreen from '../screens/tourscreen';
 import Login from '../screens/login';
 import Signup from '../screens/signup';
 import Home from '../screens/home';
+import ProfileScreen from '../screens/profile-screen';
 const Stack = createNativeStackNavigator();
 
 const Navigation: React.FC = () => {
@@ -28,6 +29,13 @@ const Navigation: React.FC = () => {
         <Stack.Screen
           name="Signup"
           component={Signup}
+          options={{
+            headerShown: false,
+          }}
+        />
+         <Stack.Screen
+          name="ProfileScreen"
+          component={ProfileScreen}
           options={{
             headerShown: false,
           }}
