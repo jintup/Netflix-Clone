@@ -11,7 +11,7 @@ const Stack = createNativeStackNavigator();
 const Navigation: React.FC = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Splashscreen">
+      <Stack.Navigator initialRouteName="TourScreen">
         <Stack.Screen
           name="TourScreen"
           component={TourScreen}
