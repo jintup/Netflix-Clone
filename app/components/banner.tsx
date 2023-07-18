@@ -20,18 +20,20 @@ const Banner: React.FC = () => {
   }, []);
   return (
     <View>
-      <LinearGradient colors={['#000000', '#000000']} style={styles.gradient}>
-        <ImageBackground
-          source={{ uri: movie ? imageUrl + movie.backdrop_path : '' }}
-          // source={require('../assets/images/bg3.jpg')}
-          style={styles.backgroundImage}
-          resizeMode="cover"
+      <ImageBackground
+        source={{ uri: movie ? imageUrl + movie.backdrop_path : '' }}
+        style={styles.backgroundImage}
+        resizeMode="cover">
+        <LinearGradient
+          start={{ x: 0.0, y: 0.0 }}
+          end={{ x: 0.4, y: 0.8 }}
+          colors={['transparent', Colors.darkblack]}
+          style={styles.gradient}
         />
-        <View style={styles.gradientOverlay} />
-        <View style={styles.buttonContainer}>
-          <Smallbutton bgColor={Colors.white} buttonText="Play" textColor={Colors.darkblack} />
-        </View>
-      </LinearGradient>
+      </ImageBackground>
+      <View style={styles.buttonContainer}>
+        <Smallbutton bgColor={Colors.white} buttonText="Play" textColor={Colors.darkblack} />
+      </View>
     </View>
   );
 };
@@ -46,7 +48,9 @@ const styles = StyleSheet.create({
     aspectRatio: 2,
   },
   gradient: {
-    flex: 1,
+    height: '250%',
+    justifyContent: 'flex-end',
+    padding: 10,
   },
   buttonContainer: {
     position: 'absolute',
@@ -54,16 +58,5 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     alignItems: 'center',
-  },
-  gradientOverlay: {
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    bottom: 0,
-    height: 50, // Adjust the height of the gradient overlay
-    backgroundColor: 'transparent',
-    zIndex: 1,
-    // Define the gradient styles
-    background: 'linear-gradient(rgba(0,0,0,0), rgba(0,0,0,1))',
   },
 });
