@@ -1,5 +1,6 @@
 import React from 'react';
 import {View, Text, TouchableOpacity, Image, StyleSheet} from 'react-native';
+import { Colors } from '../theme/colors';
 
 const ProfileItem: React.FC = ({profile, onPress}) => {
   return (
@@ -31,7 +32,7 @@ const styles = StyleSheet.create({
     marginLeft: 15,
     fontStyle: 'normal',
     fontWeight: 'bold',
-    color: '#fff',
+    color: Colors.white,
   },
 });
 
