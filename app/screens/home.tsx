@@ -5,7 +5,14 @@ import { Colors } from '../theme/colors';
 import MovieCard from '../components/card';
 import Banner from '../components/banner';
 import { useNavigation } from '@react-navigation/native';
-// import {orginals,Actions} from '../constants/urls'
+import {
+  Orginals,
+  Actions,
+  ComedyMovies,
+  HorrorMovies,
+  RomanceMovies,
+  Documentaries,
+} from '../constants/urls';
 const Home: React.FC = () => {
   const navigation = useNavigation();
 
@@ -28,9 +35,10 @@ const Home: React.FC = () => {
           showsVerticalScrollIndicator={false}>
           <Banner />
           <View style={styles.movieCardContainer}>
-            <MovieCard title={'Popular on Netflix'} />
-            <MovieCard title={'Trending Now'} />
-            <MovieCard title={'Bollywood Movies'} />
+            <MovieCard url={Orginals} title={'Popular on Netflix'} />
+            <MovieCard url={Actions} title={'Trending Now'} />
+            <MovieCard url={ComedyMovies} title={'Comedy Movies'} />
+            <MovieCard url={RomanceMovies} title={'Romantic Movies'} />
           </View>
         </ScrollView>
       </View>
