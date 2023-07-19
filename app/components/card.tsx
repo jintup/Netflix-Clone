@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { ScrollView, StyleSheet, Text, View, Image } from 'react-native';
+import { ScrollView, StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import axios from '../services/axios';
 import { API_KEY } from '../constants/api-constant';
 import { imageUrl } from '../services/api-config';
+import YoutubePlayer from 'react-native-youtube-iframe';
 const MovieCard: React.FC = ({ title, url }) => {
   const [movies, setMovies] = useState([]);
+  const [urlId, setUrlId] = useState('');
   useEffect(() => {
     axios
       .get(url)
@@ -19,6 +21,17 @@ const MovieCard: React.FC = ({ title, url }) => {
         [url],
       );
   });
+  const handleMovie = (id) => {
+    console.log(id);
+    axios.get(`/movie/${id}/videos?api_key=${API_KEY}&language=en-US`).then((response) => {
+      // console.log(response.data)
+      if (response.data.results.length !== 0) {
+        setUrlId(response.data.results[0]);
+      } else {
+        console.log('Array empty vdo not available');
+      }
+    });
+  };
   return (
     <View>
       <Text style={styles.title}>{title}</Text>
@@ -30,12 +43,15 @@ const MovieCard: React.FC = ({ title, url }) => {
                 obj, // Add a conditional check for 'movies' array
               ) => (
                 <View style={styles.imageWrapper} key={obj.id}>
-                  <Image style={styles.image} source={{ uri: imageUrl + obj.backdrop_path }} />
+                  <TouchableOpacity onPress={() => handleMovie(obj.id)}>
+                    <Image style={styles.image} source={{ uri: imageUrl + obj.backdrop_path }} />
+                  </TouchableOpacity>
                 </View>
               ),
             )}
         </View>
       </ScrollView>
+      {urlId && <YoutubePlayer height={300} videoId={urlId.key} />}
     </View>
   );
 };
