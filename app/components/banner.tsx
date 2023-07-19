@@ -32,7 +32,7 @@ const Banner: React.FC = () => {
         />
       </ImageBackground>
       <View style={styles.buttonContainer}>
-        <Smallbutton bgColor={Colors.white} buttonText="Play" textColor={Colors.darkblack} />
+        <Smallbutton bgColor={Colors.white} buttonText=" Play" textColor={Colors.darkblack} />
       </View>
     </View>
   );
