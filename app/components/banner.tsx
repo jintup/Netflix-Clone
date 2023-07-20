@@ -1,4 +1,4 @@
-import { ImageBackground, StyleSheet, Text, View } from 'react-native';
+import { ImageBackground, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import Smallbutton from './smallbutton';
@@ -6,6 +6,7 @@ import { Colors } from '../theme/colors';
 import axios from '../services/axios';
 import { API_KEY } from '../constants/api-constant';
 import { imageUrl } from '../services/api-config';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 const Banner: React.FC = () => {
   const [movie, setMovie] = useState();
   useEffect(() => {
@@ -32,7 +33,25 @@ const Banner: React.FC = () => {
         />
       </ImageBackground>
       <View style={styles.buttonContainer}>
+        <View style={styles.iconContainer}>
+          <TouchableOpacity style={styles.icon}>
+            <Ionicons
+              name="add-outline"
+              style={{ fontSize: 28, fontWeight: 'bold', color: 'white', marginRight: 2 }}
+            />
+          </TouchableOpacity>
+          <Text style={styles.text}>My list</Text>
+        </View>
         <Smallbutton bgColor={Colors.white} buttonText=" Play" textColor={Colors.darkblack} />
+        <View style={styles.iconContainer}>
+          <TouchableOpacity style={styles.icon}>
+            <Ionicons
+              name="information-circle-outline"
+              style={{ fontSize: 28, fontWeight: 'bold', color: 'white', marginRight: 2 }}
+            />
+          </TouchableOpacity>
+          <Text style={styles.text}>info</Text>
+        </View>
       </View>
     </View>
   );
@@ -53,10 +72,21 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   buttonContainer: {
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
+    flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'center',
+  },
+  icon: {
+    marginHorizontal: 40,
+    top: 260,
+  },
+  iconContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  text: {
+    color: Colors.gray,
+    fontWeight: 'bold',
+    top: 260,
   },
 });
