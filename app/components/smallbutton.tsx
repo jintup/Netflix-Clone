@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     top: 260,
   },
   buttonText: {
-    fontSize: 25,
+    fontSize: 18,
     fontWeight: 'bold',
   },
 });
