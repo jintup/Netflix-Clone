@@ -5,4 +5,5 @@ export const Colors = {
     gray: '#888',
     white: '#fff',
     offwhite: '#f5f5f5',
+    gold:'#ffd700',
 };

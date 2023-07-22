@@ -31,6 +31,7 @@ const Banner: React.FC = () => {
           colors={['transparent', Colors.darkblack]}
           style={styles.gradient}
         />
+        <Text style={styles.title}>{movie ? movie.title : ''}</Text>
       </ImageBackground>
       <View style={styles.buttonContainer}>
         <View style={styles.iconContainer}>
@@ -88,5 +89,14 @@ const styles = StyleSheet.create({
     color: Colors.gray,
     fontWeight: 'bold',
     top: 260,
+  },
+  title: {
+    color: Colors.gold,
+    fontWeight: 'bold',
+    fontSize: 25,
+    marginHorizontal: 30,
+    bottom: '50%',
+    textAlign: 'center',
+    letterSpacing: 2,
   },
 });
