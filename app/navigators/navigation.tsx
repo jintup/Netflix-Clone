@@ -1,11 +1,12 @@
 import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import TourScreen from '../screens/tourscreen';
 import Login from '../screens/login';
 import Signup from '../screens/signup';
 import Home from '../screens/home';
 import ProfileScreen from '../screens/profile-screen';
+import ChildrenHome from '../screens/children-home';
 const Stack = createNativeStackNavigator();
 
 const Navigation: React.FC = () => {
@@ -43,6 +44,13 @@ const Navigation: React.FC = () => {
         <Stack.Screen
           name="Home"
           component={Home}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="ChildrenHome"
+          component={ChildrenHome}
           options={{
             headerShown: false,
           }}

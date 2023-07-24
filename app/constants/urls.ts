@@ -12,3 +12,4 @@ export const RomanceMovies = `discover/movie?api_key=${API_KEY}&with_genres=1074
 
 export const Documentaries = `discover/movie?api_key=${API_KEY}&with_genres=99`;
 export const Kids = `discover/movie?api_key=${API_KEY}&with_genres=10751`;
+export const Child = `discover/movie?api_key=${API_KEY}&with_genres=16`;

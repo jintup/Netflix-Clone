@@ -41,8 +41,10 @@ const TourScreen: React.FC = () => {
           </View>
         ))}
       </ScrollView>
-      <ScrollIndicator currentIndex={currentIndex} totalScreens={onboardingData.length} />
-      <Lbutton onPress={handleGetStarted} title="GET STARTED" color="#FF0000" />
+      <View style={styles.btn}>
+        <ScrollIndicator currentIndex={currentIndex} totalScreens={onboardingData.length} />
+        <Lbutton onPress={handleGetStarted} title="GET STARTED" color="#FF0000" />
+      </View>
     </View>
   );
 };
@@ -62,6 +64,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     paddingHorizontal: 20,
+  },
+  btn: {
+    bottom: 50,
   },
   backgroundImage: {
     position: 'absolute',
