@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   btn: {
-    bottom: 50,
+    bottom: 22,
   },
   backgroundImage: {
     position: 'absolute',
