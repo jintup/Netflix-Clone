@@ -7,12 +7,13 @@ import Signup from '../screens/signup';
 import Home from '../screens/home';
 import ProfileScreen from '../screens/profile-screen';
 import ChildrenHome from '../screens/children-home';
+import VideoScreen from '../screens/video-screen';
 const Stack = createNativeStackNavigator();
 
 const Navigation: React.FC = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="TourScreen">
+      <Stack.Navigator initialRouteName="TourScreen" screenOptions={{ animation: 'none' }}>
         <Stack.Screen
           name="TourScreen"
           component={TourScreen}
@@ -51,6 +52,13 @@ const Navigation: React.FC = () => {
         <Stack.Screen
           name="ChildrenHome"
           component={ChildrenHome}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="VideoScreen"
+          component={VideoScreen}
           options={{
             headerShown: false,
           }}

@@ -1,57 +1,62 @@
 import React, { useEffect, useState } from 'react';
-import { ScrollView, StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
-import axios from '../services/axios';
-import { API_KEY } from '../constants/api-constant';
+import {
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  TouchableOpacity,
+  Dimensions,
+} from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
+import { clearMovies, fetchMovies, fetchMovieVideos } from '../store/feature/video/movieSlice';
 import { imageUrl } from '../services/api-config';
-import YoutubePlayer from 'react-native-youtube-iframe';
-const MovieCard: React.FC = ({ title, url }) => {
-  const [movies, setMovies] = useState([]);
-  const [urlId, setUrlId] = useState('');
+// import YoutubePlayer from 'react-native-youtube-iframe';
+import { useNavigation } from '@react-navigation/native';
+
+const MovieCard = ({ title, url }) => {
+  const dispatch = useDispatch();
+  const { movies, urlId } = useSelector((state) => state.movies);
+  const screen = Dimensions.get('screen');
+  const navigation = useNavigation();
+  // const [selectedVideoId, setSelectedVideoId] = useState(null);
+
   useEffect(() => {
-    axios
-      .get(url)
-      .then((response) => {
-        //console.log(response.data);
-        setMovies(response.data.results);
-      })
-      .catch(
-        (err) => {
-          console.log(err);
-        },
-        [url],
-      );
-  });
+    dispatch(fetchMovies(url));
+    return () => {
+      dispatch(clearMovies());
+    };
+  },[dispatch,url]);
+
   const handleMovie = (id) => {
-    console.log(id);
-    axios.get(`/movie/${id}/videos?api_key=${API_KEY}&language=en-US`).then((response) => {
-      // console.log(response.data)
-      if (response.data.results.length !== 0) {
-        setUrlId(response.data.results[0]);
+    dispatch(fetchMovieVideos(id)).then(() => {
+      // console.log('Fetched video ID:', urlId);
+      // setSelectedVideoId(urlId);
+      if (urlId) {
+        navigation.navigate('VideoScreen', { videoId: urlId });
       } else {
-        console.log('Array empty vdo not available');
+        console.log('Video ID not available');
       }
     });
   };
+
   return (
     <View>
       <Text style={styles.title}>{title}</Text>
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         <View style={styles.imageContainer}>
-          {movies &&
-            movies.map(
-              (
-                obj, // Add a conditional check for 'movies' array
-              ) => (
-                <View style={styles.imageWrapper} key={obj.id}>
-                  <TouchableOpacity onPress={() => handleMovie(obj.id)}>
-                    <Image style={styles.image} source={{ uri: imageUrl + obj.backdrop_path }} />
-                  </TouchableOpacity>
-                </View>
-              ),
-            )}
+          {movies.map((obj) => (
+            <View style={styles.imageWrapper} key={obj.id}>
+              <TouchableOpacity onPress={() => handleMovie(obj.id)}>
+                <Image style={styles.image} source={{ uri: imageUrl + obj.backdrop_path }} />
+              </TouchableOpacity>
+            </View>
+          ))}
         </View>
       </ScrollView>
-      {urlId && <YoutubePlayer height={300} videoId={urlId.key} />}
+      {/* {selectedVideoId && (
+        <YoutubePlayer height={screen.height} videoId={selectedVideoId} play={true} />
+      )} */}
     </View>
   );
 };

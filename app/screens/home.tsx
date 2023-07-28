@@ -39,7 +39,6 @@ const Home: React.FC = () => {
             <MovieCard url={Orginals} title={'Popular on Netflix'} />
             <MovieCard url={Actions} title={'Trending Now'} />
             <MovieCard url={ComedyMovies} title={'Comedy Movies'} />
-            <MovieCard url={Kids} title={'Kids'} />
             <MovieCard url={RomanceMovies} title={'Romantic Movies'} />
         
           </View>
