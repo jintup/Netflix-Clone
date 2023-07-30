@@ -7,8 +7,10 @@ import axios from '../services/axios';
 import { API_KEY } from '../constants/api-constant';
 import { imageUrl } from '../services/api-config';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import YoutubePlayer from 'react-native-youtube-iframe';
 const Banner: React.FC = () => {
   const [movie, setMovie] = useState();
+  const [urlId, setUrlId] = useState('');
   useEffect(() => {
     axios.get(`trending/all/week?api_key=${API_KEY}&language=en-US`).then((response) => {
       //console.log(response.data);
@@ -19,20 +21,39 @@ const Banner: React.FC = () => {
       );
     });
   }, []);
+  const handleMovie = (movie) => {
+    console.log('Movie ID:', movie.id);
+    axios
+      .get(`/movie/${movie}/videos?api_key=${API_KEY}&language=en-US`)
+      .then((response) => {
+        if (response.data.results.length !== 0) {
+          setUrlId(response.data.results[0]);
+        } else {
+          console.log('Array empty, video not available');
+        }
+      })
+      .catch((error) => {
+        console.log('Error fetching video:', error.message);
+      });
+  };
   return (
     <View>
-      <ImageBackground
-        source={{ uri: movie ? imageUrl + movie.backdrop_path : '' }}
-        style={styles.backgroundImage}
-        resizeMode="cover">
-        <LinearGradient
-          start={{ x: 0.0, y: 0.0 }}
-          end={{ x: 0.4, y: 0.8 }}
-          colors={['transparent', Colors.darkblack]}
-          style={styles.gradient}
-        />
-        <Text style={styles.title}>{movie ? movie.title : ''}</Text>
-      </ImageBackground>
+      {urlId ? (
+        <YoutubePlayer height={300} videoId={urlId} play={true} />
+      ) : (
+        <ImageBackground
+          source={{ uri: movie ? imageUrl + movie.backdrop_path : '' }}
+          style={styles.backgroundImage}
+          resizeMode="cover">
+          <LinearGradient
+            start={{ x: 0.0, y: 0.0 }}
+            end={{ x: 0.4, y: 0.8 }}
+            colors={['transparent', Colors.darkblack]}
+            style={styles.gradient}
+          />
+          <Text style={styles.title}>{movie ? movie.title : ''}</Text>
+        </ImageBackground>
+      )}
       <View style={styles.buttonContainer}>
         <View style={styles.iconContainer}>
           <TouchableOpacity style={styles.icon}>
@@ -43,7 +64,12 @@ const Banner: React.FC = () => {
           </TouchableOpacity>
           <Text style={styles.text}>My list</Text>
         </View>
-        <Smallbutton bgColor={Colors.white} buttonText=" Play" textColor={Colors.darkblack} />
+        <Smallbutton
+          bgColor={Colors.white}
+          buttonText=" Play"
+          textColor={Colors.darkblack}
+          onPress={() => handleMovie(movie)}
+        />
         <View style={styles.iconContainer}>
           <TouchableOpacity style={styles.icon}>
             <Ionicons
