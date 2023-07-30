@@ -12,7 +12,6 @@ import {
   HorrorMovies,
   RomanceMovies,
   Documentaries,
-  Kids,
 } from '../constants/urls';
 const Home: React.FC = () => {
   const navigation = useNavigation();
@@ -38,9 +37,8 @@ const Home: React.FC = () => {
           <View style={styles.movieCardContainer}>
             <MovieCard url={Orginals} title={'Popular on Netflix'} />
             <MovieCard url={Actions} title={'Trending Now'} />
-            <MovieCard url={ComedyMovies} title={'Comedy Movies'} />
+            <MovieCard url={HorrorMovies} title={'Horror Movies'} />
             <MovieCard url={RomanceMovies} title={'Romantic Movies'} />
-        
           </View>
         </ScrollView>
       </View>

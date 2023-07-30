@@ -25,9 +25,10 @@ const ChildrenHome: React.FC = () => {
         <ScrollView
           contentContainerStyle={styles.scrollViewContent}
           showsVerticalScrollIndicator={false}>
-        
-            <ChildCard url={Kids} title={'Kids'} />
-         
+          <ChildCard url={Kids} title={'Popular'} />
+          <ChildCard url={Child} title={'Everyone`s Watching'} />
+          <ChildCard url={Kids} title={'Top 10 Kids Movies in India Today'} />
+          <ChildCard url={Child} title={'Only on Netflix'} />
         </ScrollView>
       </View>
     </>
