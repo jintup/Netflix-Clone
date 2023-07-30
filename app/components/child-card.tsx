@@ -28,12 +28,16 @@ const ChildCard = ({ title, url }) => {
     };
   }, [dispatch, url]);
 
-  const handleMovie = (id) => {
+  const handleMovie = (id,original_title, overview) => {
     dispatch(fetchMovieVideos(id)).then(() => {
       // console.log('Fetched video ID:', urlId);
       // setSelectedVideoId(urlId);
       if (urlId) {
-        navigation.navigate('VideoScreen', { videoId: urlId });
+        navigation.navigate('VideoScreen', {
+          videoId: urlId,
+          original_title,
+          overview,
+        });
       } else {
         console.log('Video ID not available');
       }
@@ -47,7 +51,8 @@ const ChildCard = ({ title, url }) => {
         <View style={styles.imageContainer}>
           {movies.map((obj) => (
             <View style={styles.imageWrapper} key={obj.id}>
-              <TouchableOpacity onPress={() => handleMovie(obj.id)}>
+              <TouchableOpacity
+                onPress={() => handleMovie(obj.id, obj.original_title, obj.overview)}>
                 <Image style={styles.image} source={{ uri: imageUrl + obj.backdrop_path }} />
               </TouchableOpacity>
             </View>

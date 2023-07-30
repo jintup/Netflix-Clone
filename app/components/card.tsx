@@ -13,7 +13,7 @@ const MovieCard: React.FC = ({ title, url }) => {
     axios
       .get(url)
       .then((response) => {
-        //console.log(response.data);
+        // console.log(response.data);
         setMovies(response.data.results);
       })
       .catch(
@@ -23,13 +23,13 @@ const MovieCard: React.FC = ({ title, url }) => {
         [url],
       );
   });
-  const handleMovie = (id) => {
+  const handleMovie = (id, original_title, overview) => {
     axios
       .get(`/movie/${id}/videos?api_key=${API_KEY}&language=en-US`)
       .then((response) => {
         if (response.data.results.length !== 0) {
           setUrlId(response.data.results[0]);
-          navigation.navigate('VideoScreen', { videoId: urlId.key });
+          navigation.navigate('VideoScreen', { videoId: urlId.key, original_title, overview });
         } else {
           console.log('Array empty, video not available');
         }
@@ -49,9 +49,9 @@ const MovieCard: React.FC = ({ title, url }) => {
                 obj, // Add a conditional check for 'movies' array
               ) => (
                 <View style={styles.imageWrapper} key={obj.id}>
-                  <TouchableOpacity onPress={() => handleMovie(obj.id)}>
-                    <Image style={styles.image} source={{ uri: imageUrl + obj.backdrop_path }} />
-                  </TouchableOpacity>
+                 <TouchableOpacity onPress={() => handleMovie(obj.id, obj.original_title, obj.overview)}>
+                  <Image style={styles.image} source={{ uri: imageUrl + obj.backdrop_path }} />
+                </TouchableOpacity>
                 </View>
               ),
             )}
