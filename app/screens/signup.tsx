@@ -5,18 +5,24 @@ import PrimaryButton from '../components/primary-button';
 import { Colors } from '../theme/colors';
 import { useNavigation } from '@react-navigation/native';
 import Header from '../components/toursrn-header';
+import { signup } from '../services/auth-service';
 
 const Signup: React.FC = () => {
   const navigation = useNavigation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSignup = () => {
-    navigation.navigate('Home');
+  const handleSignup = async () => {
+    try {
+      const user = await signup(email, password);
+      console.log('User created:', user);
+    } catch (error) {
+      console.error('Signup error:', error.message);
+    }
   };
-  const handleSignIn = () => {
-    navigation.navigate('Signup');
-  };
+  // const handleSignIn = () => {
+  //   navigation.navigate('Signup');
+  // };
 
   return (
     <>

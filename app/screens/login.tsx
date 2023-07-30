@@ -6,14 +6,22 @@ import { Colors } from '../theme/colors';
 import { useNavigation } from '@react-navigation/native';
 import Header from '../components/header';
 import { horizontalScale } from '../utils/scale';
+import { login } from '../services/auth-service';
 
 const Login: React.FC = () => {
   const navigation = useNavigation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const handleSignIn = () => {
-    navigation.navigate('ProfileScreen');
+  const handleSignIn = async () => {
+    try {
+      const user = await login(email, password);
+      console.log('Logged-in user:', user);
+      navigation.navigate('ProfileScreen');
+    } catch (error) {
+      console.error('Login error:', error.message);
+    }
   };
+
   const handleSignup = () => {
     navigation.navigate('Signup');
   };
