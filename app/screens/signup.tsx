@@ -11,18 +11,28 @@ const Signup: React.FC = () => {
   const navigation = useNavigation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [passwordVisible, setPasswordVisible] = useState(false);
+  const togglePasswordVisibility = () => {
+    setPasswordVisible(!passwordVisible);
+  };
 
   const handleSignup = async () => {
+    if (!email || !password) {
+      setError('Please enter both email and password.');
+      return;
+    }
     try {
       const user = await signup(email, password);
       console.log('User created:', user);
+      navigation.navigate('Home');
     } catch (error) {
       console.error('Signup error:', error.message);
     }
   };
-  // const handleSignIn = () => {
-  //   navigation.navigate('Signup');
-  // };
+  const handleSignIn = () => {
+    navigation.navigate('Signup');
+  };
 
   return (
     <>
@@ -41,10 +51,13 @@ const Signup: React.FC = () => {
         />
         <InputField
           placeholder="Password"
-          secureTextEntry
+          secureTextEntry={!passwordVisible}
           value={password}
           onChangeText={(text) => setPassword(text)}
+          iname={passwordVisible ? 'eye' : 'eye-off'}
+          onPress={togglePasswordVisibility}
         />
+        {error ? <Text style={styles.errorText}>{error}</Text> : null}
         <PrimaryButton title="Sign Up" onPress={handleSignup} />
       </View>
     </>
@@ -62,8 +75,8 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.darkblack,
   },
   textcontainer: {
+    flex: 0.5,
     backgroundColor: Colors.darkblack,
-    justifyContent: 'flex-start',
     alignItems: 'center',
   },
   boldtext: {
@@ -71,13 +84,19 @@ const styles = StyleSheet.create({
     fontSize: 23,
     marginBottom: 10,
     color: Colors.white,
-    top: 20,
+    top: 40,
+    width: '60%',
   },
   normaltext: {
-    fontSize: 20,
+    fontSize: 18,
     marginBottom: 10,
     color: Colors.white,
-    top: 15,
+    top: 35,
+    width: '60%',
+  },
+  errorText: {
+    color: 'red',
+    marginBottom: 10,
   },
   Text: {
     marginTop: 40,

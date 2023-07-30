@@ -12,7 +12,17 @@ const Login: React.FC = () => {
   const navigation = useNavigation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [passwordVisible, setPasswordVisible] = useState(false);
+  const togglePasswordVisibility = () => {
+    setPasswordVisible(!passwordVisible);
+  };
+
   const handleSignIn = async () => {
+    if (!email || !password) {
+      setError('Please enter both email and password.');
+      return;
+    }
     try {
       const user = await login(email, password);
       console.log('Logged-in user:', user);
@@ -39,10 +49,13 @@ const Login: React.FC = () => {
         />
         <InputField
           placeholder="Password"
-          secureTextEntry
+          secureTextEntry={!passwordVisible}
           value={password}
           onChangeText={(text) => setPassword(text)}
+          iname={passwordVisible ? "eye" : "eye-off"}
+          onPress={togglePasswordVisibility}
         />
+        {error ? <Text style={styles.errorText}>{error}</Text> : null}
         <PrimaryButton title="Sign In" onPress={handleSignIn} />
         <View style={styles.signupcontainer}>
           <Text style={styles.Text}>New to Netflix? </Text>
@@ -75,6 +88,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginTop: 10,
+  },
+  errorText: {
+    color: 'red',
+    marginBottom: 10,
   },
 });
 

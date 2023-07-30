@@ -1,23 +1,35 @@
-import { StyleSheet, TextInput } from 'react-native';
+import { StyleSheet, TextInput, TouchableOpacity, View } from 'react-native';
 import React from 'react';
 import { Colors } from '../theme/colors';
-const InputField: React.FC = ({ placeholder, secureTextEntry, value, onChangeText }) => {
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+
+const InputField: React.FC = ({
+  placeholder,
+  secureTextEntry,
+  value,
+  onChangeText,
+  iname,
+  onPress,
+}) => {
   return (
-    <TextInput
-      style={styles.input}
-      placeholder={placeholder}
-      secureTextEntry={secureTextEntry}
-      onChangeText={onChangeText}
-      value={value}
-    />
+    <View style={styles.inputContainer}>
+      <TextInput
+        style={styles.input}
+        placeholder={placeholder}
+        secureTextEntry={secureTextEntry}
+        onChangeText={onChangeText}
+        value={value}
+      />
+      <TouchableOpacity onPress={onPress} style={styles.iconContainer}>
+        <MaterialCommunityIcons size={20} color="gray" name={iname} />
+      </TouchableOpacity>
+    </View>
   );
 };
 
-export default InputField;
-
 const styles = StyleSheet.create({
-  input: {
-    width: '80%',
+  inputContainer: {
+    width: '90%',
     height: 70,
     borderWidth: 1,
     borderColor: Colors.gray,
@@ -25,5 +37,18 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginBottom: 20,
     paddingLeft: 10,
+    position: 'relative',
+  },
+  input: {
+    flex: 1,
+    color: Colors.white,
+  },
+  iconContainer: {
+    position: 'absolute',
+    top: '50%',
+    right: 10,
+    transform: [{ translateY: -10 }],
   },
 });
+
+export default InputField;
