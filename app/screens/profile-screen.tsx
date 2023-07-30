@@ -4,6 +4,7 @@ import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import CHeader from '../components/centerheader';
 import ProfileItem from '../components/profile-item';
 import Ptext from '../components/profile-text';
+import { Colors } from '../theme/colors';
 
 const ProfileScreen: React.FC = () => {
   const profiles = [
@@ -11,6 +12,9 @@ const ProfileScreen: React.FC = () => {
     { name: 'Children', image: require('../assets/images/child.jpg') },
   ];
   const navigation = useNavigation();
+  const Logout = () => {
+    navigation.navigate('Login');
+  };
 
   const handleProfilePress = (profileName) => {
     if (profileName === 'John') {
@@ -34,6 +38,9 @@ const ProfileScreen: React.FC = () => {
           ))}
         </View>
       </View>
+      <TouchableOpacity style={styles.logoutContainer} onPress={Logout}>
+        <Text style={styles.logoutText}>Sign Out</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -51,6 +58,16 @@ const styles = StyleSheet.create({
   headercontainer: {
     flex: 1,
     backgroundColor: '#000',
+  },
+  logoutText: {
+    color: Colors.gray,
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  logoutContainer: {
+    position: 'absolute',
+    bottom: 70,
+    alignSelf: 'center',
   },
 });
 
