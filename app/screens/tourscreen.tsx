@@ -34,7 +34,7 @@ const TourScreen: React.FC = () => {
         scrollEventThrottle={16}>
         {onboardingData.map((item) => (
           <View key={item.id} style={[styles.pageContainer, { width }]}>
-            <Image source={item.image} style={styles.backgroundImage} resizeMode="cover" />
+            <Image source={item?.image} style={styles.backgroundImage} resizeMode="cover" />
             <View style={[styles.contentContainer, { top: height * 0.2 }]}>
               <SlideItem slideText={item.title} />
               <SlideItem description={item.description} />

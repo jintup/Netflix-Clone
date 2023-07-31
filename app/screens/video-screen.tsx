@@ -12,9 +12,7 @@ const VideoScreen = ({ route }) => {
   console.log(overview);
   return (
     <View style={styles.container}>
-      <View>
-        <YoutubePlayer height={200} videoId={videoId} play={true} />
-      </View>
+      <View>{videoId && <YoutubePlayer height={200} videoId={videoId} play={true} />}</View>
       <ScrollView>
         <Text style={styles.title}>{original_title}</Text>
         <Text style={styles.overview}>{overview}</Text>
