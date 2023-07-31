@@ -1,18 +1,10 @@
 import React, { useEffect } from 'react';
-import {
-  View,
-  Text,
-  Image,
-  TouchableOpacity,
-  FlatList,
-  Dimensions,
-  StyleSheet,
-} from 'react-native';
+import { View, Text, StyleSheet, FlatList } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchMovies, fetchMovieVideos, clearMovies } from '../store/feature/video/movieSlice';
-import { imageUrl } from '../services/api-config';
 import { useNavigation } from '@react-navigation/native';
-import { horizontalScale, moderateScale, verticalScale } from '../utils/scale';
+import { moderateScale } from '../utils/scale';
+import MovieItem from '../components/movie-item';
 
 interface Movie {
   id: number;
@@ -24,7 +16,6 @@ interface Movie {
 const ChildCard: React.FC<{ title: string; url: string }> = ({ title, url }) => {
   const dispatch = useDispatch();
   const { movies, urlId } = useSelector((state: RootState) => state.movies);
-  const screen = Dimensions.get('screen');
   const navigation = useNavigation();
 
   useEffect(() => {
@@ -34,7 +25,7 @@ const ChildCard: React.FC<{ title: string; url: string }> = ({ title, url }) => 
     };
   }, [dispatch, url]);
 
-  const handleMovie = (id: number, original_title: string, overview: string) => {
+  const handleMoviePress = (id: number, original_title: string, overview: string) => {
     dispatch(fetchMovieVideos(id)).then(() => {
       if (urlId) {
         navigation.navigate('VideoScreen', {
@@ -49,11 +40,7 @@ const ChildCard: React.FC<{ title: string; url: string }> = ({ title, url }) => 
   };
 
   const renderMovieItem = ({ item }: { item: Movie }) => (
-    <View style={styles.imageWrapper}>
-      <TouchableOpacity onPress={() => handleMovie(item.id, item.original_title, item.overview)}>
-        <Image style={styles.image} source={{ uri: imageUrl + item.backdrop_path }} />
-      </TouchableOpacity>
-    </View>
+    <MovieItem movie={item} onMoviePress={handleMoviePress} />
   );
 
   return (
@@ -78,21 +65,6 @@ const styles = StyleSheet.create({
     fontSize: moderateScale(19),
     fontWeight: 'bold',
     color: 'white',
-  },
-  imageContainer: {
-    flexDirection: 'row',
-    margin: horizontalScale(10),
-    borderRadius: 6,
-    overflow: 'hidden',
-  },
-  imageWrapper: {
-    marginRight: horizontalScale(10),
-  },
-  image: {
-    width: horizontalScale(105),
-    height: verticalScale(172),
-    resizeMode: 'cover',
-    borderRadius: 6,
   },
 });
 

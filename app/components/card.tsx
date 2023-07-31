@@ -1,19 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, View, Image, TouchableOpacity, FlatList } from 'react-native';
+import { StyleSheet, Text, View, FlatList } from 'react-native';
 import axios from '../services/axios';
 import { API_KEY } from '../constants/api-constant';
-import { imageUrl } from '../services/api-config';
 import { useNavigation } from '@react-navigation/native';
-import { horizontalScale, moderateScale, verticalScale } from '../utils/scale';
+import MovieItem from '../components/movie-item';
+import { Movie } from './card';
+import { moderateScale } from '../utils/scale';
 
-interface Movie {
-  id: number;
-  original_title: string;
-  overview: string;
-  backdrop_path: string;
+interface MovieCardProps {
+  title: string;
+  url: string;
 }
 
-const MovieCard: React.FC<{ title: string; url: string }> = ({ title, url }) => {
+const MovieCard: React.FC<MovieCardProps> = ({ title, url }) => {
   const [movies, setMovies] = useState<Movie[]>([]);
   const [urlId, setUrlId] = useState<string>('');
   const navigation = useNavigation();
@@ -22,7 +21,6 @@ const MovieCard: React.FC<{ title: string; url: string }> = ({ title, url }) => 
     axios
       .get(url)
       .then((response) => {
-        // console.log(response.data);
         setMovies(response.data.results);
       })
       .catch((err) => {
@@ -47,11 +45,7 @@ const MovieCard: React.FC<{ title: string; url: string }> = ({ title, url }) => 
   };
 
   const renderItem = ({ item }: { item: Movie }) => (
-    <View style={styles.imageWrapper} key={item.id}>
-      <TouchableOpacity onPress={() => handleMovie(item.id, item.original_title, item.overview)}>
-        <Image style={styles.image} source={{ uri: imageUrl + item.backdrop_path }} />
-      </TouchableOpacity>
-    </View>
+    <MovieItem movie={item} onMoviePress={handleMovie} />
   );
 
   return (
@@ -73,15 +67,6 @@ const styles = StyleSheet.create({
     fontSize: moderateScale(19),
     fontWeight: 'bold',
     color: 'white',
-  },
-  imageWrapper: {
-    marginRight: horizontalScale(10),
-  },
-  image: {
-    width: horizontalScale(105),
-    height: verticalScale(172),
-    resizeMode: 'cover',
-    borderRadius: 6,
   },
 });
 
