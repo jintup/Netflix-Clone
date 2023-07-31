@@ -1,5 +1,7 @@
 import React from 'react';
 import { View, Image, StyleSheet } from 'react-native';
+import { horizontalScale, verticalScale } from '../utils/scale';
+import { Colors } from '../theme/colors';
 
 const CHeader = () => {
   return (
@@ -14,12 +16,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    height: 60,
-    backgroundColor: '#000', 
+    height: verticalScale(60),
+    backgroundColor: Colors.darkblack,
   },
   logo: {
-    width: 120,
-    height: 40,
+    width: horizontalScale(120),
+    height: verticalScale(40),
     resizeMode: 'contain',
   },
 });

@@ -5,6 +5,7 @@ import { Colors } from '../theme/colors';
 import { useNavigation } from '@react-navigation/native';
 import { Child, Kids } from '../constants/urls';
 import ChildCard from '../components/child-card';
+import { horizontalScale, verticalScale } from '../utils/scale';
 const ChildrenHome: React.FC = () => {
   const navigation = useNavigation();
 
@@ -50,6 +51,6 @@ const styles = StyleSheet.create({
   },
   movieCardContainer: {
     paddingTop: '75%',
-    paddingHorizontal: 10,
+    paddingHorizontal: horizontalScale(10),
   },
 });

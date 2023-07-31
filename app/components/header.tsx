@@ -1,6 +1,7 @@
 import { StyleSheet, Text, Image, View, TouchableOpacity } from 'react-native';
 import React from 'react';
 import { Colors } from '../theme/colors';
+import { horizontalScale, verticalScale } from '../utils/scale';
 
 const Header: React.FC = ({
   leftImageSource,
@@ -28,17 +29,17 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    height: 100,
+    height: verticalScale(100),
   },
   leftLogo: {
-    width: 100,
-    height: 50,
-    marginLeft: 10,
+    width: horizontalScale(100),
+    height: verticalScale(50),
+    marginLeft: horizontalScale(10),
   },
   rightLogo: {
-    width: 30,
-    height: 30,
-    marginRight: 10,
+    width: horizontalScale(30),
+    height: verticalScale(30),
+    marginRight: horizontalScale(10),
     borderRadius: 6,
   },
 });

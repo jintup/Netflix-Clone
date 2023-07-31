@@ -5585,6 +5585,11 @@
   "resolved" "https://registry.npmjs.org/react-is/-/react-is-18.2.0.tgz"
   "version" "18.2.0"
 
+"react-native-device-info@^10.8.0":
+  "integrity" "sha512-DE4/X82ZVhdcnR1Y21iTP46WSSJA/rHK3lmeqWfGGq1RKLwXTIdxmfbZZnYwryqJ+esrw2l4ND19qlgxDGby8A=="
+  "resolved" "https://registry.npmjs.org/react-native-device-info/-/react-native-device-info-10.8.0.tgz"
+  "version" "10.8.0"
+
 "react-native-linear-gradient@^2.7.3":
   "integrity" "sha512-iyJszlZ1Ech2c+2qV+isMvvJKyoctR9ashDkhJg1/cuSF0vQaeLV1FAYTT3qW9doxChJGxVAFfYoxotH0yi3Iw=="
   "resolved" "https://registry.npmjs.org/react-native-linear-gradient/-/react-native-linear-gradient-2.7.3.tgz"

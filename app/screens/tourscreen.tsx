@@ -7,6 +7,7 @@ import onboardingData from '../components/onboarding-data';
 import Header from '../components/toursrn-header';
 import ScrollIndicator from '../components/scroll';
 import { useNavigation } from '@react-navigation/native';
+import { horizontalScale, verticalScale } from '../utils/scale';
 const TourScreen: React.FC = () => {
   const navigation = useNavigation();
   const { width, height } = Dimensions.get('window');
@@ -63,10 +64,10 @@ const styles = StyleSheet.create({
   contentContainer: {
     alignItems: 'center',
     justifyContent: 'center',
-    paddingHorizontal: 20,
+    paddingHorizontal: horizontalScale(20),
   },
   btn: {
-    bottom: 22,
+    bottom: verticalScale(22),
   },
   backgroundImage: {
     position: 'absolute',

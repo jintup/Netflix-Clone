@@ -5,7 +5,7 @@ import PrimaryButton from '../components/primary-button';
 import { Colors } from '../theme/colors';
 import { useNavigation } from '@react-navigation/native';
 import Header from '../components/header';
-import { horizontalScale } from '../utils/scale';
+import { horizontalScale, moderateScale, verticalScale } from '../utils/scale';
 import { login } from '../services/auth-service';
 
 const Login: React.FC = () => {
@@ -78,20 +78,20 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.darkblack,
   },
   Text: {
-    marginTop: 40,
+    marginTop: verticalScale(40),
     fontWeight: '400',
-    fontSize: horizontalScale(20),
-    lineHeight: horizontalScale(22.16),
+    fontSize: moderateScale(20),
+    lineHeight: verticalScale(22.16),
     color: Colors.offwhite,
   },
   signupcontainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: 10,
+    marginTop: verticalScale(10),
   },
   errorText: {
     color: 'red',
-    marginBottom: 10,
+    marginBottom: verticalScale(10),
   },
 });
 

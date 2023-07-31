@@ -5,6 +5,7 @@ import CHeader from '../components/centerheader';
 import ProfileItem from '../components/profile-item';
 import Ptext from '../components/profile-text';
 import { Colors } from '../theme/colors';
+import { moderateScale, verticalScale } from '../utils/scale';
 
 const ProfileScreen: React.FC = () => {
   const profiles = [
@@ -61,12 +62,12 @@ const styles = StyleSheet.create({
   },
   logoutText: {
     color: Colors.gray,
-    fontSize: 18,
+    fontSize: moderateScale(18),
     fontWeight: 'bold',
   },
   logoutContainer: {
     position: 'absolute',
-    bottom: 70,
+    bottom: verticalScale(70),
     alignSelf: 'center',
   },
 });

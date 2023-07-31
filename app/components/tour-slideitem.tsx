@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View, Image } from 'react-native';
 import React from 'react';
 import { Colors } from '../theme/colors';
+import { moderateScale } from '../utils/scale';
 
 const SlideItem: React.FC = ({ imageSource, slideText, description }) => {
   return (
@@ -28,14 +29,14 @@ const styles = StyleSheet.create({
   },
 
   slideText: {
-    fontSize: 34,
+    fontSize: moderateScale(34),
     fontWeight: 'bold',
     color: Colors.white,
     textAlign: 'center',
     marginBottom: 10,
   },
   description: {
-    fontSize: 20,
+    fontSize: moderateScale(20),
     fontFamily: 'Roboto',
     fontWeight: 'normal',
     color: Colors.white,

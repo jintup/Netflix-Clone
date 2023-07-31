@@ -13,6 +13,7 @@ import { fetchMovies, fetchMovieVideos, clearMovies } from '../store/feature/vid
 import { imageUrl } from '../services/api-config';
 // import YoutubePlayer from 'react-native-youtube-iframe';
 import { useNavigation } from '@react-navigation/native';
+import { horizontalScale, moderateScale, verticalScale } from '../utils/scale';
 
 const ChildCard = ({ title, url }) => {
   const dispatch = useDispatch();
@@ -68,23 +69,23 @@ const ChildCard = ({ title, url }) => {
 
 const styles = StyleSheet.create({
   title: {
-    fontSize: 19,
+    fontSize: moderateScale(19),
     fontWeight: 'bold',
     color: 'white',
   },
   imageContainer: {
     flex: 1,
     flexDirection: 'row',
-    margin: 10,
+    margin: horizontalScale(10),
     borderRadius: 6,
     overflow: 'hidden',
   },
   imageWrapper: {
-    marginRight: 10,
+    marginRight: horizontalScale(10),
   },
   image: {
-    width: 105,
-    height: 152,
+    width: horizontalScale(105),
+    height: verticalScale(172),
     resizeMode: 'cover',
     borderRadius: 6,
   },

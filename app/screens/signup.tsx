@@ -6,6 +6,7 @@ import { Colors } from '../theme/colors';
 import { useNavigation } from '@react-navigation/native';
 import Header from '../components/toursrn-header';
 import { signup } from '../services/auth-service';
+import { moderateScale, verticalScale } from '../utils/scale';
 
 const Signup: React.FC = () => {
   const navigation = useNavigation();
@@ -81,28 +82,28 @@ const styles = StyleSheet.create({
   },
   boldtext: {
     fontWeight: 'bold',
-    fontSize: 23,
-    marginBottom: 10,
+    fontSize: moderateScale(23),
+    marginBottom: verticalScale(10),
     color: Colors.white,
-    top: 40,
+    top: verticalScale(40),
     width: '60%',
   },
   normaltext: {
-    fontSize: 18,
-    marginBottom: 10,
+    fontSize: moderateScale(18),
+    marginBottom: verticalScale(10),
     color: Colors.white,
-    top: 35,
+    top: verticalScale(35),
     width: '60%',
   },
   errorText: {
     color: 'red',
-    marginBottom: 10,
+    marginBottom: verticalScale(10),
   },
   Text: {
-    marginTop: 40,
+    marginTop: verticalScale(40),
     fontFamily: 'Roboto',
     fontWeight: 'bold',
-    fontSize: 18,
+    fontSize: moderateScale(18),
     color: Colors.offwhite,
   },
 });

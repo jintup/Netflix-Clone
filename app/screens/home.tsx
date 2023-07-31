@@ -13,6 +13,7 @@ import {
   RomanceMovies,
   Documentaries,
 } from '../constants/urls';
+import { horizontalScale } from '../utils/scale';
 const Home: React.FC = () => {
   const navigation = useNavigation();
 
@@ -61,6 +62,6 @@ const styles = StyleSheet.create({
   },
   movieCardContainer: {
     paddingTop: '75%',
-    paddingHorizontal: 10,
+    paddingHorizontal: horizontalScale(10),
   },
 });

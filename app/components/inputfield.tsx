@@ -2,6 +2,7 @@ import { StyleSheet, TextInput, TouchableOpacity, View } from 'react-native';
 import React from 'react';
 import { Colors } from '../theme/colors';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { verticalScale } from '../utils/scale';
 
 const InputField: React.FC = ({
   placeholder,
@@ -30,7 +31,7 @@ const InputField: React.FC = ({
 const styles = StyleSheet.create({
   inputContainer: {
     width: '90%',
-    height: 70,
+    height: verticalScale(70),
     borderWidth: 1,
     borderColor: Colors.gray,
     backgroundColor: Colors.darkgray,

@@ -1,5 +1,6 @@
 import { Text, StyleSheet, TouchableOpacity } from 'react-native';
 import React from 'react';
+import { horizontalScale, moderateScale, verticalScale } from '../utils/scale';
 
 const Lbutton: React.FC = ({ title, onPress, color }) => {
   const buttonStyle = [styles.button, { backgroundColor: color }];
@@ -12,13 +13,13 @@ const Lbutton: React.FC = ({ title, onPress, color }) => {
 export default Lbutton;
 const styles = StyleSheet.create({
   button: {
-    paddingHorizontal: 20,
-    paddingVertical: 10,
+    paddingHorizontal: horizontalScale(20),
+    paddingVertical: verticalScale(10),
     borderRadius: 5,
   },
   buttonText: {
     color: '#fff',
-    fontSize: 18,
+    fontSize: moderateScale(18),
     fontWeight: 'bold',
     textAlign: 'center',
   },

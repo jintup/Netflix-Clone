@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, Text, TouchableOpacity, Image, StyleSheet} from 'react-native';
 import { Colors } from '../theme/colors';
+import { horizontalScale, moderateScale, verticalScale } from '../utils/scale';
 
 const ProfileItem: React.FC = ({profile, onPress}) => {
   return (
@@ -22,12 +23,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   profileImage: {
-    width: 100,
-    height: 100,
+    width: horizontalScale(100),
+    height: verticalScale(100),
     borderRadius: 5,
   },
   profileName: {
-    fontSize: 16,
+    fontSize: moderateScale(16),
     padding: 10,
     marginLeft: 15,
     fontStyle: 'normal',

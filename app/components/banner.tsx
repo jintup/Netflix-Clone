@@ -8,6 +8,7 @@ import { API_KEY } from '../constants/api-constant';
 import { imageUrl } from '../services/api-config';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import YoutubePlayer from 'react-native-youtube-iframe';
+import { horizontalScale, moderateScale, verticalScale } from '../utils/scale';
 const Banner: React.FC = () => {
   const [movie, setMovie] = useState();
   const [urlId, setUrlId] = useState('');
@@ -57,10 +58,7 @@ const Banner: React.FC = () => {
       <View style={styles.buttonContainer}>
         <View style={styles.iconContainer}>
           <TouchableOpacity style={styles.icon}>
-            <Ionicons
-              name="add-outline"
-              style={{ fontSize: 28, fontWeight: 'bold', color: 'white', marginRight: 2 }}
-            />
+            <Ionicons name="add-outline" style={styles.iconstyle} />
           </TouchableOpacity>
           <Text style={styles.text}>My list</Text>
         </View>
@@ -72,10 +70,7 @@ const Banner: React.FC = () => {
         />
         <View style={styles.iconContainer}>
           <TouchableOpacity style={styles.icon}>
-            <Ionicons
-              name="information-circle-outline"
-              style={{ fontSize: 28, fontWeight: 'bold', color: 'white', marginRight: 2 }}
-            />
+            <Ionicons name="information-circle-outline" style={styles.iconstyle} />
           </TouchableOpacity>
           <Text style={styles.text}>info</Text>
         </View>
@@ -96,7 +91,7 @@ const styles = StyleSheet.create({
   gradient: {
     height: '250%',
     justifyContent: 'flex-end',
-    padding: 10,
+    padding: verticalScale(10),
   },
   buttonContainer: {
     flexDirection: 'row',
@@ -104,8 +99,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   icon: {
-    marginHorizontal: 40,
-    top: 260,
+    marginHorizontal: horizontalScale(40),
+    top: horizontalScale(260),
   },
   iconContainer: {
     alignItems: 'center',
@@ -114,15 +109,21 @@ const styles = StyleSheet.create({
   text: {
     color: Colors.gray,
     fontWeight: 'bold',
-    top: 260,
+    top: horizontalScale(260),
   },
   title: {
     color: Colors.gold,
     fontWeight: 'bold',
-    fontSize: 25,
-    marginHorizontal: 30,
+    fontSize: moderateScale(25),
+    marginHorizontal: horizontalScale(25),
     bottom: '50%',
     textAlign: 'center',
     letterSpacing: 2,
+  },
+  iconstyle: {
+    fontSize: moderateScale(28),
+    fontWeight: 'bold',
+    color: Colors.white,
+    marginRight: 2,
   },
 });

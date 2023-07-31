@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Colors } from '../theme/colors';
+import { horizontalScale, verticalScale } from '../utils/scale';
 
 const ScrollIndicator: React.FC = ({ currentIndex, totalScreens }) => {
   return (
@@ -22,11 +23,11 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   indicator: {
-    width: 8,
-    height: 8,
+    width: horizontalScale(8),
+    height: verticalScale(8),
     borderRadius: 4,
     backgroundColor: Colors.gray,
-    marginHorizontal: 4,
+    marginHorizontal: horizontalScale(4),
     top: -6,
   },
   activeIndicator: {

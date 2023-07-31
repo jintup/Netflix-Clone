@@ -5,6 +5,7 @@ import YoutubePlayer from 'react-native-youtube-iframe';
 import { Colors } from '../theme/colors';
 import MovieCard from '../components/card';
 import { Actions, ComedyMovies, HorrorMovies } from '../constants/urls';
+import { horizontalScale, moderateScale } from '../utils/scale';
 
 const VideoScreen = ({ route }) => {
   const { videoId, original_title, overview } = route.params;
@@ -32,14 +33,14 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.darkblack,
   },
   title: {
-    fontSize: 24,
+    fontSize: moderateScale(24),
     fontWeight: 'bold',
-    margin: 10,
+    margin: horizontalScale(10),
     color: Colors.white,
   },
   overview: {
-    fontSize: 16,
-    marginHorizontal: 10,
+    fontSize: moderateScale(16),
+    marginHorizontal: horizontalScale(10),
     color: Colors.offwhite,
   },
 });
