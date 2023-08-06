@@ -3,6 +3,7 @@ import Navigation from './app/navigators/navigation';
 import { Provider } from 'react-redux';
 import store from './app/store/root-store/store';
 import RNBootSplash from 'react-native-bootsplash';
+import { StatusBar } from 'react-native';
 
 const App: React.FC = () => {
   const hideSplashScreen = RNBootSplash.hide;
@@ -14,6 +15,7 @@ const App: React.FC = () => {
   }, []);
   return (
     <Provider store={store}>
+      <StatusBar barStyle="light-content" backgroundColor="black" />
       <Navigation />
     </Provider>
   );
