@@ -7,15 +7,28 @@ import { horizontalScale, verticalScale } from '../utils/scale';
 interface MovieItemProps {
   movie: Movie;
   onMoviePress: (id: number, original_title: string, overview: string) => void;
+  imageWidth?: number;
+  imageHeight?: number;
 }
 
-const MovieItem: React.FC<MovieItemProps> = ({ movie, onMoviePress }) => {
+const MovieItem: React.FC<MovieItemProps> = ({
+  movie,
+  onMoviePress,
+  imageWidth = 105,
+  imageHeight = 172,
+}) => {
   const { id, original_title, overview, backdrop_path } = movie;
 
   return (
     <View style={styles.imageWrapper}>
       <TouchableOpacity onPress={() => onMoviePress(id, original_title, overview)}>
-        <Image style={styles.image} source={{ uri: imageUrl + backdrop_path }} />
+        <Image
+          style={[
+            styles.image,
+            { width: horizontalScale(imageWidth), height: verticalScale(imageHeight) },
+          ]}
+          source={{ uri: imageUrl + backdrop_path }}
+        />
       </TouchableOpacity>
     </View>
   );
@@ -26,8 +39,6 @@ const styles = StyleSheet.create({
     marginRight: horizontalScale(10),
   },
   image: {
-    width: horizontalScale(105),
-    height: verticalScale(172),
     resizeMode: 'cover',
     borderRadius: 6,
   },
